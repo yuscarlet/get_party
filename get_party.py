@@ -1,17 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import re
+import bs4
 import sys
 import codecs
-
-import unicodedata
-#from HTMLParser import HTMLParser
-from html.parser import HTMLParser
 import requests
-from readability import Document
-
+import unicodedata
 import urllib.request
-import bs4
+from readability import Document
+from html.parser import HTMLParser
 
 class MLStripper(HTMLParser):
     def __init__(self):
@@ -70,6 +67,7 @@ def search_text(text, s):
     res = list(set(tmp))
     return res
 
+# 表を検索して読む
 def search_table(text):
     tmp = []
     base_idx = 0
@@ -102,6 +100,7 @@ def search_table(text):
     res = list(set(tmp))
     return res
 
+# 画像を判定して云々（未実装）
 def guess_from_image(url):
     headers = {
         'User-Agent':
